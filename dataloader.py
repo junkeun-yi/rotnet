@@ -300,7 +300,7 @@ class DataLoader(object):
         return self.get_iterator(epoch)
 
     def __len__(self):
-        return self.epoch_size / self.batch_size
+        return int(self.epoch_size / self.batch_size)
 
 if __name__ == '__main__':
     from matplotlib import pyplot as plt
