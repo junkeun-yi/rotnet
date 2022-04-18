@@ -226,6 +226,7 @@ class Algorithm():
 
         eval_stats  = {}
         train_stats = {}
+        best_precision = 0
         self.init_record_of_best_model()
         for self.curr_epoch in range(start_epoch, self.max_num_epochs):
             self.logger.info('Training epoch [%3d / %3d]' % (self.curr_epoch+1, self.max_num_epochs))
@@ -239,6 +240,12 @@ class Algorithm():
 
             if data_loader_test is not None:
                 eval_stats = self.evaluate(data_loader_test)
+                if eval_stats['prec1'] > best_precision:
+                    best_precision = eval_stats['prec1']
+                    # save model
+                    filepath = f'{self.exp_dir}/best_model.pth'
+                    torch.save(self.networks.state_dict(), filepath)
+                    torch.save(self.networks, filepath[:-1])
                 self.logger.info('==> Evaluation stats: %s' % (eval_stats))
                 self.keep_record_of_best_model(eval_stats, self.curr_epoch)
 
