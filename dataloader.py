@@ -155,7 +155,7 @@ class GenericDataset(data.Dataset):
             self.transform = transforms.Compose(transform)
             self.data = datasets.__dict__[self.dataset_name.upper()](
                 _CIFAR_DATASET_DIR, train=self.split=='train',
-                download=True, transform=self.transform)
+                download=False, transform=self.transform)
         else:
             raise ValueError('Not recognized dataset {0}'.format(dname))
         
