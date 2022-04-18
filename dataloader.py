@@ -270,7 +270,8 @@ class DataLoader(object):
                     self.transform(rotate_img(img0, 180)),
                     self.transform(rotate_img(img0, 270))
                 ]
-                rotation_labels = torch.LongTensor([0, 1, 2, 3])
+                # rotation_labels = torch.LongTensor([0, 1, 2, 3])
+                rotation_labels = torch.LongTensor([0, 1, 1, 1])
                 return torch.stack(rotated_imgs, dim=0), rotation_labels
             def _collate_fun(batch):
                 batch = default_collate(batch)
