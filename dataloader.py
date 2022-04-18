@@ -270,7 +270,8 @@ class DataLoader(object):
                     self.transform(rotate_img(img0, 180)),
                     self.transform(rotate_img(img0, 270))
                 ]
-                rotation_labels = torch.LongTensor([0, 1, 2, 3])
+                # rotation_labels = torch.LongTensor([0, 1, 2, 3])
+                rotation_labels = torch.LongTensor([0, 1, 1, 1])
                 return torch.stack(rotated_imgs, dim=0), rotation_labels
             def _collate_fun(batch):
                 batch = default_collate(batch)
@@ -300,7 +301,7 @@ class DataLoader(object):
         return self.get_iterator(epoch)
 
     def __len__(self):
-        return self.epoch_size / self.batch_size
+        return int(self.epoch_size / self.batch_size)
 
 if __name__ == '__main__':
     from matplotlib import pyplot as plt
