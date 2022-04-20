@@ -1,7 +1,6 @@
 # RotNet: A MEC Analysis
 
 ## Code Structure
----
 ### MEC RotNet
 1. See [1_GetFeatures.ipynb](1_GetFeatures.ipynb) to train an autoencoder for CIFAR10 to generate features for CIFAR10. This will generate a CSV of data (features, {0 if image not rotated, 1 o.w.})
 2. See [2_TrainBrainome.ipynb](2_TrainBrainome.ipynb) to train the MEC sized MLP for rotation prediction. 
